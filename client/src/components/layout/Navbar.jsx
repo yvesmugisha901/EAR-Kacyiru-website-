@@ -47,7 +47,7 @@ export default function Navbar() {
             </li>
           ))}
           <li className="pt-2"><Link to="/giving" className="btn-light" onClick={() => setOpen(false)}>{t('nav.give')}</Link></li>
-          <li className="pt-2"><LanguageSwitcher /></li>
+        <li className="pt-2"><LanguageSwitcher align="left" /></li>
         </ul>
       )}
     </header>
