@@ -1,0 +1,64 @@
+datasource db {
+  provider = "sqlite" // switch to "postgresql" for production
+  url      = env("DATABASE_URL")
+}
+generator client { provider = "prisma-client-js" }
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  message   String
+  handled   Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model PrayerRequest {
+  id        String   @id @default(cuid())
+  name      String?
+  request   String
+  isPublic  Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model Sermon {
+  id        String   @id @default(cuid())
+  title     String
+  speaker   String
+  scripture String?
+  youtubeId String?
+  audioUrl  String?
+  preachedOn DateTime
+  language  String   @default("rw")
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  location    String
+  startsAt    DateTime
+  endsAt      DateTime?
+  flyerUrl    String?
+  needsRsvp   Boolean  @default(false)
+  registrations EventRegistration[]
+}
+
+model Ministry {
+  id      String @id @default(cuid())
+  slug    String @unique
+  name    String
+  summary String
+  leader  String?
+}
+
+model EventRegistration {
+  id        String   @id @default(cuid())
+  eventId   String
+  event     Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  name      String
+  phone     String
+  guests    Int      @default(1)
+  createdAt DateTime @default(now())
+}
