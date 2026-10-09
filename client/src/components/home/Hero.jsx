@@ -4,30 +4,34 @@ import { useLang } from '../../i18n/LanguageContext.jsx';
 
 export default function Hero() {
   const { t } = useLang();
-  const [en, rw] = church.services;
-  const sunday = [en, rw];
+  const sunday = [church.services[0], church.services[1]];
 
   return (
     <section className="border-b border-cyprus/10 bg-sand">
-      <div className="container-x grid items-center gap-14 py-14 md:grid-cols-[1fr_1.05fr] md:py-20 lg:py-24">
+      <div className="container-x grid items-center gap-14 py-14 md:grid-cols-[1.05fr_0.95fr] md:py-20 lg:py-24">
         <div className="hero-rise">
-          <h1 className="max-w-xl text-4xl leading-[1.1] sm:text-5xl lg:text-6xl">
-            {t('hero.tagline')}
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brick">
+            {t('hero.eyebrow')}
+          </p>
+          <h1 className="mt-4 max-w-xl text-5xl leading-[1.05] sm:text-6xl lg:text-7xl">
+            {t('hero.title')}
           </h1>
-          <p className="mt-6 max-w-md text-lg leading-8 text-cyprus-dark/80">
-            {t('hero.intro', { name: church.name, en: en.start, rw: rw.start })}
+          <p className="mt-6 max-w-lg text-lg leading-8 text-cyprus-dark/85">
+            {t('hero.welcome')}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a href="#service-times" className="btn-primary">{t('hero.times')}</a>
             <Link to="/sermons" className="btn-outline">{t('hero.watch')}</Link>
           </div>
-          <p className="mt-10 flex items-center gap-2 text-sm text-cyprus-dark/70">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z" />
-              <circle cx="12" cy="10" r="2.5" />
-            </svg>
-            {church.address}
-          </p>
+
+          <figure className="mt-10 max-w-md border-l-4 border-brick pl-5">
+            <blockquote className="font-display text-xl italic leading-8 text-cyprus">
+              “{t('hero.verse')}”
+            </blockquote>
+            <figcaption className="mt-2 text-sm font-semibold text-brick">
+              {t('hero.verse.ref')}
+            </figcaption>
+          </figure>
         </div>
 
         <div className="hero-rise relative" style={{ animationDelay: '.15s' }}>
