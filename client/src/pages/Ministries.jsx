@@ -1,5 +1,6 @@
 import PageHeader from '../components/ui/PageHeader.jsx';
 import State from '../components/ui/State.jsx';
+import YouthGallery from '../components/ministries/YouthGallery.jsx';
 import useFetch from '../hooks/useFetch.js';
 import { getMinistries } from '../api/content.js';
 import { Link } from 'react-router-dom';
@@ -23,7 +24,10 @@ export default function Ministries() {
             ))}
           </ul>
         </State>
-        <p className="mt-10">Love to sing? <Link to="/choirs" className="font-semibold underline underline-offset-4">Meet our choirs</Link>.</p>
+
+        <YouthGallery />
+
+        <p className="mt-16">Love to sing? <Link to="/choirs" className="font-semibold underline underline-offset-4">Meet our choirs</Link>.</p>
       </section>
     </>
   );
