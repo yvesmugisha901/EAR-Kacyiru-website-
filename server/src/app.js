@@ -7,7 +7,8 @@ import { notFound, errorHandler } from './middleware/errorHandler.js';
 const app = express();
 app.set('trust proxy', 1); // correct client IPs behind a host proxy (needed for rate limiting)
 app.use(helmet());
-app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:5173' }));
+const allowedOrigin = (process.env.CLIENT_URL || 'http://localhost:5173').trim().replace(/\/+$/, '');
+app.use(cors({ origin: allowedOrigin }));
 app.use(express.json({ limit: '20kb' }));
 app.use('/api', routes);
 app.use(notFound);
