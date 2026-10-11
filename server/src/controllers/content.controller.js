@@ -6,7 +6,7 @@ export const listSermons = async (req, res, next) => {
     const sermons = await prisma.sermon.findMany({
       where: {
         ...(language && { language: String(language) }),
-        ...(q && { OR: ['title', 'speaker', 'scripture'].map((f) => ({ [f]: { contains: String(q) } })) }),
+        ...(q && { OR: ['title', 'speaker', 'scripture'].map((f) => ({ [f]: { contains: String(q), mode: 'insensitive' } })) }),
       },
       orderBy: { preachedOn: 'desc' },
       take: limit ? Math.min(Number(limit) || 20, 50) : 50,
