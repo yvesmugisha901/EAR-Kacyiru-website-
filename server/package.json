@@ -2,14 +2,15 @@
   "name": "ear-kacyiru-server",
   "private": true,
   "type": "module",
-  "scripts": {
-    "dev": "node --watch --env-file=.env src/server.js",
-    "start": "node src/server.js",
-    "db:push": "prisma db push",
-    "db:studio": "prisma studio",
-    "db:seed": "node prisma/seed.js",
-    "postinstall": "prisma generate"
-  },
+"scripts": {
+  "dev": "node --watch --env-file=.env src/server.js",
+  "start": "node src/server.js",
+  "db:push": "prisma db push",
+  "db:studio": "prisma studio",
+  "db:seed": "node prisma/seed.js",
+  "postinstall": "prisma generate",
+  "build": "prisma generate"
+},
   "dependencies": {
     "@prisma/client": "^5.22.0",
     "cors": "^2.8.5",
